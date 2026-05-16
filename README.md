@@ -8,9 +8,14 @@ the voice its characteristic "PDA" timbre, and plays it through the speakers.
 go build -o pda.exe
 ```
 
-Prebuilt `pda.exe` binaries are also produced by the
-[Build workflow](../../actions/workflows/build.yml) — grab the `pda` artifact
-from the latest successful run.
+Or download a prebuilt binary from the
+[**latest release**](../../releases/latest) — the
+[Build workflow](../../actions/workflows/build.yml) rebuilds and republishes it
+on every push to `main`. Direct link:
+
+```
+https://github.com/tlanfer/subnautica-alerts/releases/latest/download/pda.exe
+```
 
 ## Usage
 

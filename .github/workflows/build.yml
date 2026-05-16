@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -27,3 +30,16 @@ jobs:
           name: pda
           path: pda.exe
           if-no-files-found: error
+
+      - name: Publish rolling 'latest' release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest --cleanup-tag --yes || true
+          gh release create latest pda.exe \
+            --title "Latest build" \
+            --notes "Automated build of commit ${{ github.sha }}." \
+            --target "${{ github.sha }}" \
+            --latest
