@@ -1,0 +1,9 @@
+# Build artifacts
+pda.exe
+*.exe
+
+# IDE
+.idea/
+
+# Sample audio outputs
+*.mp3
